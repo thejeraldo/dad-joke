@@ -8,7 +8,8 @@
 import Foundation
 
 struct Joke: Codable, Identifiable {
-  let id: String
-  let joke: String
-  let status: Int
+  var id: String?
+  var joke: String?
+  var status: Int
+  var message: String?
 }
