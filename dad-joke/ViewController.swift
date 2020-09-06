@@ -77,5 +77,11 @@ class ViewController: UIViewController {
   @IBAction func didTapNewJoke() {
     getNewJoke()
   }
+  
+  @IBAction func didTapShare() {
+    guard let text = jokeLabel.text, !text.isEmpty else { return }
+    let vc = UIActivityViewController(activityItems: [ text ], applicationActivities: nil)
+    present(vc, animated: true, completion: nil)
+  }
 }
 

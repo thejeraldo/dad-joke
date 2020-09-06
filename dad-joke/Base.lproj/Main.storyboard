@@ -40,6 +40,9 @@
                                         <state key="normal" title="Share 😆">
                                             <color key="titleColor" systemColor="systemBlueColor"/>
                                         </state>
+                                        <connections>
+                                            <action selector="didTapShare" destination="BYZ-38-t0r" eventType="touchUpInside" id="zyV-BZ-0Qx"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
