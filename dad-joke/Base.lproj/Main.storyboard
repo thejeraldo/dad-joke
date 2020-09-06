@@ -1,24 +1,134 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17140" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17115"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="dad_joke" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="HLu-Rt-koS">
+                                <rect key="frame" x="20" y="746" width="374" height="96"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cia-b4-WEK">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="D89-N6-dTr"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <state key="normal" title="NEW JOKE"/>
+                                        <connections>
+                                            <action selector="didTapNewJoke" destination="BYZ-38-t0r" eventType="touchUpInside" id="ten-ld-kEx"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="32C-QS-Xcp">
+                                        <rect key="frame" x="0.0" y="52" width="374" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="Eyh-7q-SXl"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <state key="normal" title="Share 😆">
+                                            <color key="titleColor" systemColor="systemBlueColor"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="32C-QS-Xcp" secondAttribute="trailing" id="GtR-8a-4oY"/>
+                                    <constraint firstAttribute="trailing" secondItem="Cia-b4-WEK" secondAttribute="trailing" id="Igf-D6-gVi"/>
+                                    <constraint firstItem="32C-QS-Xcp" firstAttribute="leading" secondItem="HLu-Rt-koS" secondAttribute="leading" id="m3I-Ql-9EP"/>
+                                    <constraint firstItem="Cia-b4-WEK" firstAttribute="leading" secondItem="HLu-Rt-koS" secondAttribute="leading" id="xTA-V6-Xoa"/>
+                                </constraints>
+                            </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="zfC-8X-x67">
+                                <rect key="frame" x="175" y="353" width="64" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="JV3-3X-SHT"/>
+                                    <constraint firstAttribute="width" constant="64" id="Krq-Sl-xDe"/>
+                                </constraints>
+                                <color key="color" systemColor="systemBlueColor"/>
+                            </activityIndicatorView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0IG-46-5iw">
+                                <rect key="frame" x="20" y="44" width="374" height="682"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Error" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="URE-PD-BXK">
+                                        <rect key="frame" x="20" y="20" width="334" height="642"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" id="utH-2v-dph"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                        <color key="textColor" systemColor="systemOrangeColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Some Really Funny Joke Here!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ZD2-jk-l9Q">
+                                        <rect key="frame" x="20" y="20" width="334" height="642"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" id="rXQ-Pk-IOg"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="ZD2-jk-l9Q" firstAttribute="leading" secondItem="0IG-46-5iw" secondAttribute="leading" constant="20" symbolic="YES" id="CtP-SI-yrm"/>
+                                    <constraint firstItem="URE-PD-BXK" firstAttribute="leading" secondItem="0IG-46-5iw" secondAttribute="leading" constant="20" symbolic="YES" id="FF3-m1-hR2"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZD2-jk-l9Q" secondAttribute="bottom" constant="20" symbolic="YES" id="QEn-FJ-Fvw"/>
+                                    <constraint firstAttribute="trailing" secondItem="URE-PD-BXK" secondAttribute="trailing" constant="20" symbolic="YES" id="ZXv-Qx-J40"/>
+                                    <constraint firstItem="ZD2-jk-l9Q" firstAttribute="top" secondItem="0IG-46-5iw" secondAttribute="top" constant="20" symbolic="YES" id="aN3-A0-bqO"/>
+                                    <constraint firstAttribute="bottom" secondItem="URE-PD-BXK" secondAttribute="bottom" constant="20" symbolic="YES" id="ibq-Lw-LOe"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZD2-jk-l9Q" secondAttribute="trailing" constant="20" symbolic="YES" id="qmP-FA-d0b"/>
+                                    <constraint firstItem="URE-PD-BXK" firstAttribute="top" secondItem="0IG-46-5iw" secondAttribute="top" constant="20" symbolic="YES" id="y98-H7-amq"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="0IG-46-5iw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="30I-yR-a0s"/>
+                            <constraint firstItem="HLu-Rt-koS" firstAttribute="top" secondItem="0IG-46-5iw" secondAttribute="bottom" constant="20" id="6NX-TM-ykP"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0IG-46-5iw" secondAttribute="trailing" constant="20" id="Luc-ma-bMR"/>
+                            <constraint firstItem="zfC-8X-x67" firstAttribute="centerX" secondItem="0IG-46-5iw" secondAttribute="centerX" id="OjX-cm-iWx"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="HLu-Rt-koS" secondAttribute="trailing" constant="20" id="Ojj-aQ-FvW"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="HLu-Rt-koS" secondAttribute="bottom" constant="20" id="eYg-Oq-XBs"/>
+                            <constraint firstItem="HLu-Rt-koS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="eoE-rC-Bin"/>
+                            <constraint firstItem="0IG-46-5iw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="lmv-U5-mse"/>
+                            <constraint firstItem="zfC-8X-x67" firstAttribute="centerY" secondItem="0IG-46-5iw" secondAttribute="centerY" id="p76-wr-lv7"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="errorLabel" destination="URE-PD-BXK" id="o2w-PN-zse"/>
+                        <outlet property="jokeLabel" destination="ZD2-jk-l9Q" id="pTg-gp-7p9"/>
+                        <outlet property="jokeLabelBackground" destination="0IG-46-5iw" id="teU-ut-Elm"/>
+                        <outlet property="loadingIndicator" destination="zfC-8X-x67" id="5IN-OF-jD0"/>
+                        <outlet property="newJokeButton" destination="Cia-b4-WEK" id="Xl8-of-suM"/>
+                        <outlet property="shareButton" destination="32C-QS-Xcp" id="VKc-n2-vUt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="95.652173913043484" y="109.82142857142857"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
