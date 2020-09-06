@@ -13,3 +13,15 @@ struct Joke: Codable, Identifiable {
   var status: Int
   var message: String?
 }
+
+enum JokeError: Error, LocalizedError {
+  case error(_ error: NSError)
+  
+  var errorDescription: String? {
+    switch self {
+      case .error(let error):
+        if error.code == -1009 { return "There is no internet connection." }
+        return "Something went wrong."
+    }
+  }
+}
