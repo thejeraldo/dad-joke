@@ -49,21 +49,31 @@ class ViewController: UIViewController {
   // MARK: - Setup
   
   private func setupBindings() {
-    vm.$isLoading.sink { [weak self] isLoading in
-      self?.loadingIndicator.isHidden = !isLoading
-      self?.newJokeButton.isEnabled = !isLoading
-    }.store(in: &cancellables)
+    vm.$isLoading
+      .map { !$0 }
+      .assign(to: \.isHidden, on: loadingIndicator)
+      .store(in: &cancellables)
     
-    vm.$errorMessage.sink { [weak self] errorMessage in
-      self?.errorLabel.text = errorMessage
-    }.store(in: &cancellables)
+    vm.$isLoading
+      .map { !$0 }
+      .assign(to: \.isEnabled, on: newJokeButton)
+      .store(in: &cancellables)
+    
+    vm.$errorMessage
+      .assign(to: \.text!, on: errorLabel)
+      .store(in: &cancellables)
     
     vm.$joke.sink { [weak self] joke in
-      UIView.animate(withDuration: 0.3) {
-        self?.jokeLabel.alpha = 0
-      } completion: { _ in
-        self?.jokeLabel.alpha = 1
+      self?.jokeLabel.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+      UIView.animate(withDuration: 1.0,
+                     delay: 0.0,
+                     usingSpringWithDamping: 0.5,
+                     initialSpringVelocity: 0.2,
+                     options: .curveEaseOut) {
         self?.jokeLabel.text = joke
+        self?.jokeLabel.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+      } completion: { _ in
+        
       }
     }.store(in: &cancellables)
   }
